@@ -1,0 +1,29 @@
+export interface SearchCodeResult {
+    id: string,
+    1: string,
+    2: string,
+    3: string,
+    4: string,
+    5: string, 
+    created_by: string,
+    currency: string,
+    date_created: string,
+    date_updated: string,
+    form_id: string,
+    ip: string,
+    is_approved: boolean,
+    is_fulfilled: null,
+    is_read: string,
+    is_starred: string,
+    payment_amount: null
+    payment_date: null
+    payment_method: null
+    payment_status: null
+    post_id: null
+    source_url: string
+    status: string,
+    transaction_id: null,
+    transaction_type: null,
+    user_agent: string,
+    workflow_current_status_timestamp: boolean,
+}
