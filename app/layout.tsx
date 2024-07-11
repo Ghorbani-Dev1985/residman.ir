@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "/public/styles/globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "react-hot-toast";
+import { ShabnamFont } from "@/utils/font";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={inter.className}>{children}</body>
+      <body className={ShabnamFont.variable}>
+      <Toaster />
+      <main className="container min-h-screen flex flex-col items-center justify-center">
+        {children}
+      </main>
+        </body>
     </html>
   );
 }

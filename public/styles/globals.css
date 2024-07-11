@@ -2,28 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+  * {
+    @apply p-0 m-0 box-border;
+  }
+  html {
+    @apply scroll-smooth scrollbar-thin scrollbar-thumb-primary  scrollbar-track-primary-100;
+  }
+  li {
+    @apply list-none;
+  }
+  body {
+    @apply text-zinc-700 bg-sky-50 h-full font-shabnam text-base overflow-x-hidden scroll-smooth;
+  }
+  img {
+    border-radius: 20px;
+  }
+  p{
+    @apply leading-8 text-justify
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  .textField-input {
+    @apply w-full px-4 py-3 rounded-lg text-secondary-900 outline-none border border-gray-100 bg-white dark:bg-transparent hover:border-primary-500 focus:border-primary-500 transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary-200 dark:focus:shadow-secondary-200;
+  }
 }
 
 @layer utilities {

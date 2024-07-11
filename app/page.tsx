@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Home() {
   const [searchCode, setSearchCode] = useState("")
@@ -24,7 +25,7 @@ export default function Home() {
           setSearchResult(res.data.entries)
         })
         .catch((err) => {
-          console.log(err?.response?.data?.message)
+        toast.error(err?.response?.data?.message)
        })
     }
   
@@ -32,11 +33,12 @@ export default function Home() {
 
   console.log(searchResult)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     <input value={searchCode} onChange={(e) => SearchCodeHandler(e)}/>
+    <>
+     <input className="textField-input" value={searchCode} onChange={(e) => SearchCodeHandler(e)}/>
     {searchResult.length
 
-    }
-    </main>
+}
+</>
+
   );
 }
