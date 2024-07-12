@@ -3,12 +3,12 @@ import axios from "axios";
 import { Suspense, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { SearchCodeResult } from "@/types/type.d";
-import { CalendarDaysIcon, MapPinIcon , ClipboardDocumentIcon , ArrowsUpDownIcon , ArrowTopRightOnSquareIcon} from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { CalendarDaysIcon, MapPinIcon , ClipboardDocumentIcon} from "@heroicons/react/24/outline";
+import SortPostLink from "@/components/SortPostLink";
 const Home: React.FC = () => {
   const [searchCode, setSearchCode] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-  const [sortByDate , setSortByDate] = useState(true)
+  const [sortByDate , setSortByDate] = useState<boolean>(true)
   const SearchCodeHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchCode(e.target.value);
     if (searchCode.length >= 2) {
@@ -33,15 +33,12 @@ const Home: React.FC = () => {
         });
     }
   };
-  const today = new Date().toLocaleDateString("fa-IR");
   let SortBySearchResult;
   if(sortByDate){
     SortBySearchResult = [...searchResult].sort((dateOne : SearchCodeResult  , dateTow : SearchCodeResult) => +new Date(dateTow["3"]) - +new Date(dateOne["3"]))
   }else{
     SortBySearchResult = [...searchResult].sort((dateOne : SearchCodeResult  , dateTow : SearchCodeResult) => +new Date(dateOne["3"]) - +new Date(dateTow["3"]))
   }
-
-  console.log(today)
  
   return (
     <>
@@ -53,13 +50,8 @@ const Home: React.FC = () => {
       />
       {searchResult.length > 0 && (
         <Suspense fallback={<p>Loading feed...</p>}>
-      <div className="w-full flex justify-between items-center my-6">
-        <p onClick={() => setSortByDate((prev) => !prev)} className="flex justify-center items-center gap-x-1.5 cursor-pointer text-zinc-400 hover:text-zinc-800 transition-colors"><ArrowsUpDownIcon className="size-5"/>مرتب سازی تاریخ</p>
-        <Link target="_blank" href="http://tracking.post.ir/" className="flex justify-center items-center gap-x-1.5 bg-sky-100 text-sky-500 font-bold hover:bg-white px-1.5 md:px-5 py-2 rounded-lg transition-colors">
-        <ArrowTopRightOnSquareIcon className="size-5 -rotate-90"/>
-       <span className="select-none text-sm md:text-base">پیگیری سفارش</span> </Link>
-      </div>
-          <section className="w-full grid md:grid-cols-2 lg:grid-cols-3 mb-8 border border-gray-200 rounded-lg shadow-xl dark:border-gray-700 md:mb-12 bg-white my-10 overflow-hidden">
+          <SortPostLink setSortByDate={setSortByDate}/>
+          <section className="w-full grid md:grid-cols-2 lg:grid-cols-3 mb-8 border border-gray-200 rounded-lg shadow-xl dark:border-gray-700 md:mb-12 bg-white my-4 overflow-hidden h-screen overflow-y-scroll">
             {SortBySearchResult.map((item: SearchCodeResult) => {
               return (
                 <div key={item.id}>

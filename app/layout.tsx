@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "/public/styles/globals.css";
 import { Toaster } from "react-hot-toast";
 import { ShabnamFont } from "@/utils/font";
+import Header from "@/components/Header";
+import SubHeader from "@/components/SubHeader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +20,9 @@ export default function RootLayout({
     <html lang="fa" dir="rtl">
       <body className={ShabnamFont.variable}>
       <Toaster />
-      <main className="container min-h-screen flex flex-col items-center justify-center">
+      <Header />
+      <SubHeader />
+      <main className="container h-screen flex flex-col items-center justify-center my-7">
         {children}
       </main>
         </body>
