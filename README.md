@@ -1,7 +1,7 @@
 <p align="center">
   <a href="#">
     <img  src="./public/images/logo.png" width="100" alt="ghorbani-dev.ir"/>
-    <h2 align="center">The Rick and Morty</h2>
+    <h2 align="center">سیستم دریافت کد مرسوله پستی</h2>
   </a>
 </p>
 
