@@ -12,7 +12,14 @@ const Header: React.FC = () => {
           className="absolute -right-8 top-0 -scale-x-[1] z-20"
         />
         <div className="flex justify-center h-full items-center">
-        <div>logo</div>
+        <div>
+           <Image
+          width={100}
+          height={100}
+          alt="ghorbani-dev.ir"
+          src="/images/logo.png"
+        />
+        </div>
        <p className="flex-1 text-center text-sm md:text-xl font-bold">سیستم دریافت کد مرسوله پستی</p>
         </div>
          <Image

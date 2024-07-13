@@ -7,7 +7,7 @@ const SubHeader: React.FC = () => {
     const today = new Date().toLocaleDateString("fa-IR");
     return(
     <section className="container flex justify-center items-center">
-      <div className="w-full flex justify-between items-center max-w-60 md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
+      <div className="w-full flex justify-between items-center max-w-60 md:max-w-[40rem] lg:max-w-[52rem] xl:max-w-[62rem]">
         {/* Right Side */}
         <div className="h-[49px] relative z-10">
            <Image

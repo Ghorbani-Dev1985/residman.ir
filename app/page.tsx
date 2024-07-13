@@ -5,6 +5,9 @@ import toast from "react-hot-toast";
 import { SearchCodeResult } from "@/types/type.d";
 import { CalendarDaysIcon, MapPinIcon , ClipboardDocumentIcon} from "@heroicons/react/24/outline";
 import SortPostLink from "@/components/SortPostLink";
+import Loading from "@/components/Loading";
+import Alert from "@/components/Alert";
+import TopText from "@/components/TopText";
 const Home: React.FC = () => {
   const [searchCode, setSearchCode] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -39,17 +42,17 @@ const Home: React.FC = () => {
   }else{
     SortBySearchResult = [...searchResult].sort((dateOne : SearchCodeResult  , dateTow : SearchCodeResult) => +new Date(dateOne["3"]) - +new Date(dateTow["3"]))
   }
- 
   return (
     <>
+     <TopText />
       <input
         className="textField-input"
         value={searchCode}
         onChange={(e) => SearchCodeHandler(e)}
         placeholder="لطفا بخشی از نام خانوادگی خود را وارد نمایید و کد مرسوله خود را کپی نمایید"
       />
-      {searchResult.length > 0 && (
-        <Suspense fallback={<p>Loading feed...</p>}>
+      {SortBySearchResult.length > 0 && (
+        <Suspense fallback={<Loading />}>
           <SortPostLink setSortByDate={setSortByDate}/>
           <section className="w-full grid md:grid-cols-2 lg:grid-cols-3 mb-8 border border-gray-200 rounded-lg shadow-xl dark:border-gray-700 md:mb-12 bg-white my-4 overflow-hidden h-screen overflow-y-scroll">
             {SortBySearchResult.map((item: SearchCodeResult) => {
@@ -89,6 +92,9 @@ const Home: React.FC = () => {
           </section>
         </Suspense>
       )}
+      <div className="my-12">
+      {(!SortBySearchResult.length && searchCode.length >= 2) && <Alert alertText="موردی با نام‌خانوادگی وارد شده یافت نگردید." />}
+      </div>
     </>
   );
 };
