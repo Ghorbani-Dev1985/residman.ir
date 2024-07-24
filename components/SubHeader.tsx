@@ -15,7 +15,7 @@ const SubHeader: React.FC = () => {
           height={52}
           alt="ghorbani-dev.ir"
           src="/images/startEndSubHeader.svg"
-          className="absolute -right-3 top-0 -scale-x-[1] z-20"
+          className="absolute -right-3 top-0 rotate-180 scale-x-[1] z-20"
         />
         <div className="w-full max-w-36 md:max-w-48 flex justify-center h-full items-center gap-x-1.5 bg-sky-500 font-bold text-xs md:text-base text-white px-1 md:px-4 py-3">
             <CalculatorIcon className="size-5"/>
@@ -35,7 +35,7 @@ const SubHeader: React.FC = () => {
           height={52}
           alt="ghorbani-dev.ir"
           src="/images/startEndSubHeader.svg"
-          className="absolute -right-3 top-0 -scale-x-[1] z-20"
+          className="absolute -right-3 top-0 rotate-180 scale-x-[1] z-20"
         />
         <Link target="_blank" href="https://eynakpanda.ir/" className="w-full max-w-32 md:max-w-48 flex justify-center h-full items-center gap-x-1.5 bg-sky-500 font-bold text-xs md:text-base text-white px-1 md:px-4 py-3">
             <ArrowLongLeftIcon className="size-5"/>
